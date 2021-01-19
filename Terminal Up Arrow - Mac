@@ -1,0 +1,17 @@
+Source : https://superuser.com/a/585004
+
+
+You had up-line-or-search bound to your up-arrow. This should do what you want:
+
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+[Edit]:
+
+The command above only uses the first word to search. The following will use the whole line. See man zshcontrib...
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
